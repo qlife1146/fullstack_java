@@ -10,7 +10,7 @@ public class ScoreCalculator {
   }
 
   public static double calcAverage(int amount, int subjectCount) {
-    return amount / subjectCount;
+    return (double) amount / subjectCount;
   }
 
   public static String calcGrade(double average) {
