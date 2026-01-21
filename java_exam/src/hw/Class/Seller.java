@@ -1,4 +1,4 @@
-package hw;
+package hw.Class;
 
 public class Seller {
   int money;

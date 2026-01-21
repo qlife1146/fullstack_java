@@ -1,4 +1,4 @@
-package hw;
+package hw.Class;
 
 public class BuySellTest {
   public static void main(String[] args) {
