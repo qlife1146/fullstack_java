@@ -51,6 +51,7 @@ public class Customer {
         this.setHunger(this.getHunger() + restaurant.menues[menuIndex].getAmount());
       } else {
         System.out.println(this.hunger + "/" + restaurant.getStandardHunger() + " -> 배 부르시니 안 팔아요.");
+        System.out.println();
         return;
       }
     } else {
@@ -61,6 +62,7 @@ public class Customer {
         this.setTipsiness(this.getTipsiness() + restaurant.menues[menuIndex].getAmount() / 10f);
       } else {
         System.out.println(this.tipsiness + "/" + restaurant.getStandardTipsiness() + " -> 취하셨으니 안 팔아요.");
+        System.out.println();
         return;
       }
     }

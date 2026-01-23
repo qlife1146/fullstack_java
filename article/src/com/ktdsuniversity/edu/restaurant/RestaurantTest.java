@@ -32,7 +32,7 @@ public class RestaurantTest {
     aa.order(aRestaurant, 5);
 
     aa.order(bRestaurant, 0);
-    aa.order(bRestaurant, 4);
+    aa.order(bRestaurant, 3);
 
   }
 }
