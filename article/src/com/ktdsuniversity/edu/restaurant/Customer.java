@@ -10,14 +10,6 @@ public class Customer {
     this.tipsiness = tipsiness;
   }
 
-  // public boolean isFull(Restaurant restaurant) {
-  // return !(this.hunger > restaurant.getStandardHunger());
-  // }
-
-  // public boolean isDrunk(Restaurant restaurant) {
-  // return !(this.tipsiness > restaurant.getStandardTipsiness());
-  // }
-
   public int getHunger() {
     return this.hunger;
   }
