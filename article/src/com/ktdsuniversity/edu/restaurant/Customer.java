@@ -38,6 +38,7 @@ public class Customer {
     // 1. 주문 확인
     if (menuIndex < 0 || menuIndex >= restaurant.menues.length) {
       System.out.println("존재하지 않는 메뉴 번호입니다.");
+      System.out.println();
       return;
     }
 
