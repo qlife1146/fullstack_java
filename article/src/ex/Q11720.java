@@ -1,13 +1,11 @@
 package ex;
 
 public class Q11720 {
-  public int check(int x, int y) {
+  public long check(long x, long y) {
     int sum = 0;
     String strY = y + "";
-    // System.out.println(strY);
     for (int i = 0; i < x; i += 1) {
       var a = strY.charAt(i) - '0';
-      // System.out.println(a);
       sum = sum + a;
     }
     return sum;
@@ -15,6 +13,8 @@ public class Q11720 {
 
   public static void main(String[] args) {
     Q11720 check = new Q11720();
+    System.out.println(check.check(1, 1));
     System.out.println(check.check(5, 54321));
+    // System.out.println(check.check(25, 7000000000000000000000000));
   }
 }
