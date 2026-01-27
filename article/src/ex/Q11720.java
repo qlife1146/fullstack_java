@@ -15,6 +15,5 @@ public class Q11720 {
     Q11720 check = new Q11720();
     System.out.println(check.check(1, 1));
     System.out.println(check.check(5, 54321));
-    // System.out.println(check.check(25, 7000000000000000000000000));
   }
 }

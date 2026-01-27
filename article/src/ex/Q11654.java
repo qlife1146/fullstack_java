@@ -12,5 +12,6 @@ public class Q11654 {
     System.out.println(check.check("0"));
     System.out.println(check.check("9"));
     System.out.println(check.check("a"));
+    System.out.println(check.check("AB"));
   }
 }
