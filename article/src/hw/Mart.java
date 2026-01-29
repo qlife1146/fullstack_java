@@ -15,14 +15,66 @@ public class Mart {
   }
 
   public void order(Customer customer, int index, int quantity) {
-    int totalPrice = products[index].getPrice() * quantity;
+    order(customer, index, quantity, 0);
+  }
+
+  protected void order(Customer customer, int index, int quantity, int usePoint) {
     if (index < 0 || index >= products.length) {
-      System.out.println("존재하지 않는 인덱스");
+      System.out.println("Invalid index.");
+      return;
     }
-    if (products[index].getPrice() * quantity > customer.getMoney()) {
-      System.out.println("돈 부족");
+    if (quantity <= 0) {
+      System.out.println("Invalid quantity.");
+      return;
     }
 
-    customer.setMoney(customer.getMoney() - totalPrice);
+    int totalPrice = products[index].getPrice() * quantity;
+    int discountedPrice = calcDiscountedPrice(customer, totalPrice);
+    int pointsUsed = calcPointToUse(customer, discountedPrice, usePoint);
+
+    if (pointsUsed < 0) {
+      pointsUsed = 0;
+    }
+    if (pointsUsed > customer.getPoint()) {
+      pointsUsed = customer.getPoint();
+    }
+
+    int pointsApplied = pointsUsed;
+    if (pointsApplied > discountedPrice) {
+      pointsApplied = discountedPrice;
+    }
+
+    int payAmount = discountedPrice - pointsApplied;
+    if (payAmount > customer.getMoney()) {
+      System.out.println("Not enough money.");
+      return;
+    }
+
+    customer.setMoney(customer.getMoney() - payAmount);
+    applyPoints(customer, totalPrice, pointsUsed);
+  }
+
+  protected int calcDiscountedPrice(Customer customer, int totalPrice) {
+    return totalPrice;
+  }
+
+  // Mart does not use points.
+  protected int calcPointToUse(Customer customer, int discountedPrice, int usePoint) {
+    return 0;
+  }
+
+  protected int calcEarnPoint(Customer customer, int totalPrice) {
+    return 0;
+  }
+
+  private void applyPoints(Customer customer, int totalPrice, int pointsUsed) {
+    if (pointsUsed > 0) {
+      customer.setPoint(customer.getPoint() - pointsUsed);
+    }
+
+    int earnedPoint = calcEarnPoint(customer, totalPrice);
+    if (earnedPoint > 0) {
+      customer.setPoint(customer.getPoint() + earnedPoint);
+    }
   }
 }
