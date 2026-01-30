@@ -63,4 +63,9 @@ public class Customer {
     System.out.println("손님 취기: " + this.tipsiness + "/" + restaurant.getStandardTipsiness());
     System.out.println();
   }
+
+  public char[] getName() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getName'");
+  }
 }
