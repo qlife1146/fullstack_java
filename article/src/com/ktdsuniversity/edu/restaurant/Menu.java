@@ -10,7 +10,7 @@ public class Menu {
   }
 
   /** true = 음식, false = 술 */
-  public boolean getIsFood() {
+  public Boolean getIsFood() {
     return this.isFood;
   }
 

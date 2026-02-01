@@ -27,40 +27,45 @@ public class Customer {
   }
 
   public void order(Restaurant restaurant, int menuIndex) {
-    // 1. 주문 확인
-    if (menuIndex < 0 || menuIndex >= restaurant.menues.length) {
-      System.out.println("존재하지 않는 메뉴 번호입니다.");
+    try {
+      if (restaurant == null) {
+        throw new NullPointerException("식당 정보가 없습니다.");
+      }
+      Menu menu = restaurant.getMenu(menuIndex);
+      Boolean isFood = menu.getIsFood();
+      if (isFood == null) {
+        throw new NullPointerException("메뉴 타입이 없습니다.");
+      }
+
+      if (isFood.booleanValue()) {
+        int newHunger = this.hunger + menu.getAmount();
+        // 배부름 기준 초과 시 FullException 발생
+        if (newHunger > restaurant.getStandardHunger()) {
+          throw new FullException(
+              "배부름 수치를 초과했습니다: " + newHunger + "/" + restaurant.getStandardHunger());
+        }
+        this.setHunger(newHunger);
+      } else {
+        float newTipsiness = this.tipsiness + menu.getAmount() / 10f;
+        // 취함 기준 초과 시 DrunkenException 발생
+        if (newTipsiness > restaurant.getStandardTipsiness()) {
+          throw new DrunkenException(
+              "취함 수치를 초과했습니다: " + newTipsiness + "/" + restaurant.getStandardTipsiness());
+        }
+        this.setTipsiness(newTipsiness);
+      }
+
+      System.out.println("고객 배부름: " + this.hunger + "/" + restaurant.getStandardHunger());
+      System.out.println("고객 취함: " + this.tipsiness + "/" + restaurant.getStandardTipsiness());
       System.out.println();
-      return;
+    } catch (ArrayIndexOutOfBoundsException ex) {
+      // 메뉴 인덱스 범위 오류 처리
+      System.out.println("없는 인덱스입니다.: " + menuIndex);
+      System.out.println();
+    } catch (NullPointerException ex) {
+      // 필수 데이터 누락(null) 처리
+      System.out.println("필수 데이터가 없습니다: " + ex.getMessage());
+      System.out.println();
     }
-
-    boolean isFood = restaurant.menues[menuIndex].getIsFood();
-
-    if (isFood) {
-      // 2. true = 음식
-      // 2-1. 음식이면 손님의 허기 확인
-      if (!restaurant.isFull(this.hunger)) {
-        // 2-1-1. 손님의 허기를 [menuIndex]의 amount만큼 증가(setHunger)
-        this.setHunger(this.getHunger() + restaurant.menues[menuIndex].getAmount());
-      } else {
-        System.out.println(this.hunger + "/" + restaurant.getStandardHunger() + " -> 배 부르시니 안 팔아요.");
-        System.out.println();
-        return;
-      }
-    } else {
-      // 2. false = 술
-      // 2.2 술이면 손님의 취기 확인
-      if (!restaurant.isDrunk(this.tipsiness)) {
-        // 2-2-1. 손님의 취기를 [menuIndex]의 amount/10만큼 증가
-        this.setTipsiness(this.getTipsiness() + restaurant.menues[menuIndex].getAmount() / 10f);
-      } else {
-        System.out.println(this.tipsiness + "/" + restaurant.getStandardTipsiness() + " -> 취하셨으니 안 팔아요.");
-        System.out.println();
-        return;
-      }
-    }
-    System.out.println("손님 허기: " + this.hunger + "/" + restaurant.getStandardHunger());
-    System.out.println("손님 취기: " + this.tipsiness + "/" + restaurant.getStandardTipsiness());
-    System.out.println();
   }
 }

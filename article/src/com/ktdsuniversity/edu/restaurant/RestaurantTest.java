@@ -2,37 +2,33 @@ package com.ktdsuniversity.edu.restaurant;
 
 public class RestaurantTest {
   public static void main(String[] args) {
-    Menu[] aMenu = {
-        new Menu(true, 50),
+    Menu[] menu = {
         new Menu(true, 100),
-        new Menu(true, 250),
-        new Menu(false, 16),
-        new Menu(false, 5),
-        new Menu(false, 40),
+        new Menu(false, 30)
     };
+    Restaurant restaurant = new Restaurant(150, 5, menu);
+    Customer customer = new Customer(120, 4);
 
-    Restaurant aRestaurant = new Restaurant(500, 10, aMenu);
+    // FullException 테스트
+    try {
+      customer.order(restaurant, 0);
+    } catch (FullException ex) {
+      System.out.println("FullException - " + ex.getMessage());
+      System.out.println();
+    }
 
-    Menu[] bMenu = {
-        new Menu(true, 20),
-        new Menu(true, 70),
-        new Menu(true, 100),
-        new Menu(false, 18),
-        new Menu(false, 10),
-        new Menu(false, 70),
-    };
+    // DrunkenException 테스트
+    try {
+      customer.order(restaurant, 1);
+    } catch (DrunkenException ex) {
+      System.out.println("DrunkenException - " + ex.getMessage());
+      System.out.println();
+    }
 
-    Restaurant bRestaurant = new Restaurant(300, 20, bMenu);
+    // ArrayIndexOutOfBoundsException
+    customer.order(restaurant, 5);
 
-    Customer aa = new Customer(450, 8);
-
-    aa.order(aRestaurant, 0);
-    aa.order(aRestaurant, 7);
-    aa.order(aRestaurant, 5);
-    aa.order(aRestaurant, 5);
-
-    aa.order(bRestaurant, 0);
-    aa.order(bRestaurant, 3);
-
+    // NullPointerException 테스트
+    customer.order(null, 0);
   }
 }
