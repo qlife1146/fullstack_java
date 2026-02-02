@@ -9,6 +9,14 @@ public class Sheet {
     this.status = status;
   }
 
+  public boolean isAvailable() {
+    return Boolean.TRUE.equals(status);
+  }
+
+  public void reserve() {
+    this.status = false;
+  }
+
   @Override
   public String toString() {
     String check = null;

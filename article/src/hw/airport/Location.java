@@ -8,7 +8,7 @@ import java.util.Map;
 public class Location {
   public static void main(String[] args) {
     Map<String, List<Flight>> locations = new HashMap<>();
-    locations.put(1, new ArrayList<>());
+    // locations.put(1, new ArrayList<>());
 
   }
 }
