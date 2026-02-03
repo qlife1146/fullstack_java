@@ -51,7 +51,7 @@ public class Airport {
       System.out.print("\"" + sheetNumber + "\"번 좌석을 예약하시겠습니까? (y/N): ");
       String answer = sc.next();
       if (answer.equals("y")) {
-        choice.reserve();
+        choice.setStatus();
         System.out.println("\"" + sheetNumber + "\"번 좌석이 예약되었습니다.");
         break;
       } else {

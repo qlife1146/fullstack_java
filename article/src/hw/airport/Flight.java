@@ -8,10 +8,4 @@ public class Flight {
     this.flighNumber = flighNumber;
     this.sheet = sheet;
   }
-
-  // @Override
-  // public String toString() {
-  // return "Flight Number: " + this.flighNumber
-  // }
-
 }

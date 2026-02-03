@@ -13,7 +13,7 @@ public class Sheet {
     return Boolean.TRUE.equals(status);
   }
 
-  public void reserve() {
+  public void setStatus() {
     this.status = false;
   }
 
