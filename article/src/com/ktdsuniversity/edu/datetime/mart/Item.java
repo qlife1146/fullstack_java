@@ -27,5 +27,8 @@ public class Item {
     this.expiredDate = expiredDate;
   }
 
-  // TODO toString
+  @Override
+  public String toString() {
+    return "Item [name = " + this.name + ", expiredDate = " + this.expiredDate + "]";
+  }
 }

@@ -2,19 +2,21 @@ package com.ktdsuniversity.edu.datetime.mart;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TestMart {
   public static void main(String[] args) {
-    // Item p1 = new Item("p1", LocalDate.parse("2026-01-01"));
-    // Item p2 = new Item("p2", LocalDate.parse("2026-01-02"));
-    // Item p3 = new Item("p3", LocalDate.parse("2026-01-03"));
-    // Item n1 = new Item("n1", LocalDate.parse("2026-02-04"));
-    // Item n2 = new Item("n2", LocalDate.parse("2026-02-04"));
-    // Item n3 = new Item("n3", LocalDate.parse("2026-02-04"));
-    // Item f1 = new Item("f1", LocalDate.parse("2026-02-02"));
-    // Item f2 = new Item("f2", LocalDate.parse("2026-02-03"));
-    // Item f3 = new Item("f3", LocalDate.parse("2026-02-05"));
+    Store store = new Store(new ArrayList<>());
+    store.addItem(new Item("p0", LocalDate.parse("2026-01-31")));
+    store.addItem(new Item("p1", LocalDate.parse("2026-02-01")));
+    store.addItem(new Item("p2", LocalDate.parse("2026-02-03")));
+    store.addItem(new Item("n3", LocalDate.parse("2026-02-04")));
+    store.addItem(new Item("n4", LocalDate.parse("2026-02-04")));
+    store.addItem(new Item("n5", LocalDate.parse("2026-02-04")));
+    store.addItem(new Item("f6", LocalDate.parse("2026-02-05")));
+    store.addItem(new Item("f7", LocalDate.parse("2026-02-08")));
+    store.addItem(new Item("f8", LocalDate.parse("2026-02-09")));
+
+    store.sell(8);
 
   }
 }

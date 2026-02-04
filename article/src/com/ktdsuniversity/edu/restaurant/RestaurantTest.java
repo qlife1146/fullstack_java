@@ -2,7 +2,6 @@ package com.ktdsuniversity.edu.restaurant;
 
 public class RestaurantTest {
 
-  // TODO: 배부름의 정도와 취함의 정도를 기준으로 예외를 발생시키도록 합니다.
   // 각 호출 단계에서 발생할 수 있는 NullPointerExcpetion, ArrayIndexOutOfBoundsException에 대한
   // 예외처리가 반드시 필요합니다.
   // 배부름이 일정 수치를 초과하면 "FullException" throw,

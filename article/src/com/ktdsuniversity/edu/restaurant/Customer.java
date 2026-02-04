@@ -70,7 +70,6 @@ public class Customer {
   }
 
   public char[] getName() {
-    // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'getName'");
   }
 }

@@ -25,7 +25,7 @@ public class Sheet {
     } else {
       check = "X";
     }
-    // TODO: [] 없애도록 노력하기
+
     return this.number + ": " + check + ", ";
   }
 }

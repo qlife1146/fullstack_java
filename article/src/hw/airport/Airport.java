@@ -114,9 +114,6 @@ public class Airport {
       while (true) {
         reserveSeat(sc, flights, flightName);
         break;
-        // // TODO: isAvailable sheet check (y/N) (no Y or n, just use 'y' and 'N')
-        // // TODO: and if isAvailable True = reservation check
-        // // TODO: or False = Plz choose another sheetNumber
 
       }
       break;
